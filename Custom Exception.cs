@@ -4,30 +4,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Exception_handling
 {
-    class AgeException : Exception
+    public class AgeException : Exception
     {
         public AgeException(string message) : base(message) { }
     }
-    internal class Custom_Exception
+    public class Custom_Exception
     {
-        static void Main()
+        static void CheckAge(int age)
+        {
+            if (age < 18)
+            {
+                throw new AgeException("You must be at least 18 years old.");
+            }
+            else
+            {
+                Console.WriteLine("Age accepted.");
+            }
+        }
+        public static void Main(string[] args)
         {
             try
             {
-                Console.Write("Enter age: ");
-                int age = int.Parse(Console.ReadLine());
+                Console.Write("Enter your age: ");
+                int age = Convert.ToInt32(Console.ReadLine());
 
-                if (age < 18)
-                    throw new AgeException("Age must be 18 or above.");
-
-                Console.WriteLine("Valid age!");
+                CheckAge(age);
             }
             catch (AgeException ex)
             {
-                Console.WriteLine("Custom Exception: " + ex.Message);
+                Console.WriteLine("Custom Exception Caught!");
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine("Please enter a valid number.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Unexpected error: " + ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Program Finished.");
             }
         }
+        
     }
 }

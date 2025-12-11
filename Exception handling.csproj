@@ -6,7 +6,7 @@
     <RootNamespace>Exception_handling</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>Exception_handling.Finally_Block_Demonstration</StartupObject>
+    <StartupObject>Exception_handling.Custom_Exception</StartupObject>
   </PropertyGroup>
 
 </Project>
